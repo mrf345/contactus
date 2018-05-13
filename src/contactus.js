@@ -125,7 +125,7 @@ var contactUs = function (options={}, callback=function () {}) {
             returnCUS.loop = false
         } else {
             var toSubEffect = function () {
-                $(returnCUS.elements.submit).stop().toggle('fade', {}, 1000).toggle('fade', {}, 1000)
+                $(returnCUS.elements.submit).stop().animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
             }
             returnCUS.loop = setInterval(toSubEffect, 2000)
         }
