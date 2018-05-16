@@ -10,7 +10,7 @@ var contactUs = function (options={}, callback=function () {}) {
         email: options.email || '',
         nextUrl: options.nextUrl || '',
         formClass: options.formClass || '',
-        titleText: options.title || 'Contact Us',
+        titleText: options.titleText || 'Contact Us',
         titleClass: options.titleClass || '',
         titleStyle: options.titleStyle || {},
         nameText: options.nameText || 'Name : ',
