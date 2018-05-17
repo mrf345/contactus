@@ -36,6 +36,19 @@ var contactUs = function (options={}, callback=function () {}) {
         
     }
 
+    returnCUS.toEffectMsg = function (id) {
+        if ($(id).val().length < 3 || $(id).val().indexOf('@') || $(id).val().indexOf('.')) {
+            event.preventDefault()
+            $(id).after($('<h3>').addClass(returnCUS.options.titleClass).css(returnCUS.options.titleStyle)
+            .text('| Please, enter a valid email ... |').attr('id', id + Eff))
+            $(id + Eff).stop()
+            .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+        } else $(id + Eff).remove()
+    }
+
     returnCUS.elements = { // list of jQuery elements to be appended
         title: $('<div>').css({'display': 'flex', 'flex-direction': 'row', 'justify-content': 'center'}).append($('<h1>').addClass(returnCUS.options.titleClass).css(returnCUS.options.titleStyle).text(returnCUS.options.titleText)),
         form: $('<form>').attr('method', 'POST').addClass(returnCUS.options.formClass).attr('action', returnCUS.options.email)
@@ -53,8 +66,47 @@ var contactUs = function (options={}, callback=function () {}) {
             $('<label>').attr('for', 'inpCom').addClass(returnCUS.options.commentClass).text(returnCUS.options.commentText).css(returnCUS.options.commentStyle)
         ).append(
             $('<textarea>').attr('rows', '7').attr('name', 'comment').attr('id', 'inpCom').addClass('form-control')
-            .attr('placeholder', 'Hello FQM developer ...').css(returnCUS.options.inputStyle)
-        ))
+            .attr('placeholder', 'Hello dear developer ...').css(returnCUS.options.inputStyle)
+        )).submit(
+          function (event) {
+            if ($('#inpName').val().length < 2) {
+                event.preventDefault()
+                if (!$('#nameToEff').length) {
+                    $('#inpName').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    .text('| Please, enter a valid name |').attr('id', 'nameToEff'))
+                }
+                $('#nameToEff').stop()
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            } else $('#nameToEff').remove()
+            if ($('#inpEmail').val().length < 3 || $('#inpEmail').val().indexOf('@') === -1 || $('#inpEmail').val().indexOf('.') === -1) {
+                event.preventDefault()
+                if (!$('#emailToEff').length) {
+                    $('#inpEmail').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    .text('| Please, enter a valid email |').attr('id', 'emailToEff'))
+                }
+                $('#emailToEff').stop()
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            } else $('#emailToEff').remove()
+            if ($('#inpCom').val().length < 5) {
+                event.preventDefault()
+                if (!$('#comToEff').length) {
+                    $('#inpCom').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    .text('| Please, enter a proper message |').attr('id', 'comToEff'))
+                }
+                $('#comToEff').stop()
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+                .animate({'opacity': '0'}, 1000).animate({'opacity': '1'}, 1000)
+            } else $('#comToEff').remove()
+          }
+        )
         .append($('<input>').attr('type', 'hidden').attr('name', '_subject').attr('value', returnCUS.options.title))
         .append($('<input>').attr('type', 'text').attr('name', '_gotcha').css({'display': 'none'}))
         .append($('<input>').attr('type', 'hidden').attr('name', '_next').attr('value', returnCUS.options.nextUrl)),
