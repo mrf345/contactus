@@ -29,6 +29,7 @@ var contactUs = function (options={}, callback=function () {}) {
         cancelClass: options.cancelClass || '',
         cancelStyle: options.cancelStyle || {},
         inputStyle: options.inputStyle || {},
+        errorStyle: options.errorStyle || {},
         overlayColor: options.overlayColor || 'rgba(0,0,0,0.85)',
         overlayClass: options.overlayClass || '',
         overlayStyle: options.overlayStyle || {},
@@ -72,7 +73,7 @@ var contactUs = function (options={}, callback=function () {}) {
             if ($('#inpName').val().length < 2) {
                 event.preventDefault()
                 if (!$('#nameToEff').length) {
-                    $('#inpName').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    $('#inpName').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.errorStyle))
                     .text('| Please, enter a valid name |').attr('id', 'nameToEff'))
                 }
                 $('#nameToEff').stop()
@@ -84,7 +85,7 @@ var contactUs = function (options={}, callback=function () {}) {
             if ($('#inpEmail').val().length < 3 || $('#inpEmail').val().indexOf('@') === -1 || $('#inpEmail').val().indexOf('.') === -1) {
                 event.preventDefault()
                 if (!$('#emailToEff').length) {
-                    $('#inpEmail').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    $('#inpEmail').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.errorStyle))
                     .text('| Please, enter a valid email |').attr('id', 'emailToEff'))
                 }
                 $('#emailToEff').stop()
@@ -96,7 +97,7 @@ var contactUs = function (options={}, callback=function () {}) {
             if ($('#inpCom').val().length < 5) {
                 event.preventDefault()
                 if (!$('#comToEff').length) {
-                    $('#inpCom').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.commentStyle))
+                    $('#inpCom').after($('<h4>').addClass(returnCUS.options.titleClass).css(Object.assign({'text-align': 'center', 'margin-top': '2%'}, returnCUS.options.errorStyle))
                     .text('| Please, enter a proper message |').attr('id', 'comToEff'))
                 }
                 $('#comToEff').stop()
