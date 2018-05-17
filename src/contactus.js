@@ -53,12 +53,12 @@ var contactUs = function (options={}, callback=function () {}) {
     returnCUS.elements = { // list of jQuery elements to be appended
         title: $('<div>').css({'display': 'flex', 'flex-direction': 'row', 'justify-content': 'center'}).append($('<h1>').addClass(returnCUS.options.titleClass).css(returnCUS.options.titleStyle).text(returnCUS.options.titleText)),
         form: $('<form>').attr('method', 'POST').addClass(returnCUS.options.formClass).attr('action', returnCUS.options.email)
-        .append($('<div>').css({'margin-top': '3%'}).addClass('form-group row').append(
+        .append($('<div>').css({'margin-top': '3%'}).addClass('form-group').append(
             $('<label>').attr('for', 'inpName').addClass(returnCUS.options.nameClass).text(returnCUS.options.nameText).css(returnCUS.options.nameStyle)
         ).append(
             $('<input>').attr('type', 'text').attr('name', 'name').attr('id', 'inpName').addClass('form-control')
             .attr('placeholder', 'Bertrand Russell').css(returnCUS.options.inputStyle)
-        )).append($('<div>').css({'margin-top': '3%'}).addClass('form-group row').append(
+        )).append($('<div>').css({'margin-top': '3%'}).addClass('form-group').append(
             $('<label>').attr('for', 'inpEmail').addClass(returnCUS.options.emailClass).text(returnCUS.options.emailText).css(returnCUS.options.emailStyle)
         ).append(
             $('<input>').attr('type', 'email').attr('name', 'email').attr('id', 'inpEmail').addClass('form-control')
